@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lenovo.qweather.R;
+import com.example.lenovo.qweather.service.AutoUpdateService;
 import com.example.lenovo.qweather.util.HttpCallbackListener;
 import com.example.lenovo.qweather.util.analysis;
 import com.example.lenovo.qweather.util.httpUtil;
@@ -137,8 +138,12 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
         cityNameText.setText(preferences.getString("city_name",""));
         temp1Text.setText(preferences.getString("temp1",""));
         temp2Text.setText(preferences.getString("temp2",""));
+        weatherDespText.setText(preferences.getString("weather_desp",""));
         publishText.setText("今天"+preferences.getString("publish_time","")+"发布");
         currentDateText.setText(preferences.getString("current_date",""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
+        cityNameText.setVisibility(View.VISIBLE);
+        Intent intent=new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
