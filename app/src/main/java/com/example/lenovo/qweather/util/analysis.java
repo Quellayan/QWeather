@@ -3,6 +3,7 @@ package com.example.lenovo.qweather.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
@@ -89,7 +90,8 @@ public class analysis {
     }
     public static void saveWeatherInfo(Context context,String cityName,String weatherCode,String temp1,
                                        String temp2,String weatherDesp,String publishTime){
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy年MM月dd日",Locale.CHINA);
+
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy年M月d日",Locale.CHINA);
         SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(context).edit();
         editor.putBoolean("city_selected",true);
         editor.putString("city_name",cityName);

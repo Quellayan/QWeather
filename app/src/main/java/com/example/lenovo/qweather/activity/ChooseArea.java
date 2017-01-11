@@ -28,9 +28,6 @@ import com.example.lenovo.qweather.util.httpUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by lenovo on 2017/1/11.
- */
 
 public class ChooseArea extends AppCompatActivity{
     public static final int level_province=0;
@@ -67,6 +64,7 @@ public class ChooseArea extends AppCompatActivity{
         listView=(ListView) findViewById(R.id.list_view);
         titleText=(TextView) findViewById(R.id.title_text);
         adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataList);
+        listView.setAdapter(adapter);
         qWeatherDB=QWeatherDB.getInstance(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

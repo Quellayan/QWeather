@@ -50,10 +50,12 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         switchCity.setOnClickListener(this);
         refreshWeather.setOnClickListener(this);
         String countyCode =getIntent().getStringExtra("county_code");
+
         if (!TextUtils.isEmpty(countyCode)){
             //有县级代号时就去查询天气
-            publishText.setText("同步中...");
+
             weatherInfoLayout.setVisibility(View.INVISIBLE);
+            publishText.setText("同步中...");
             queryWeatherCode(countyCode);
         }else {
             showWeather();
