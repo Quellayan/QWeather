@@ -6,13 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.lenovo.qweather.db.DBOpenHelper;
-
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by lenovo on 2016/12/23.
- */
 
 public class QWeatherDB {
     public static final String dbName="QWeather";
@@ -98,7 +93,7 @@ public class QWeatherDB {
     }
     public List<County> loadCounties(int cityId){
         List<County> list=new ArrayList<County>();
-        Cursor cursor=db.query("Country",null,"city_id=?",new String[] {String.valueOf(cityId)},null,null,null);
+        Cursor cursor=db.query("County",null,"city_id=?",new String[] {String.valueOf(cityId)},null,null,null);
         if (cursor.moveToFirst()){
             do
             {

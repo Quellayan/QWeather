@@ -1,10 +1,10 @@
 package com.example.lenovo.qweather.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +22,7 @@ import com.example.lenovo.qweather.util.httpUtil;
  * Created by lenovo on 2017/1/5.
  */
 
-public class WeatherActivity extends Activity implements View.OnClickListener{
+public class WeatherActivity extends AppCompatActivity implements View.OnClickListener{
     private LinearLayout weatherInfoLayout;
     private TextView cityNameText;
     private TextView publishText;
@@ -38,7 +38,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.weather_info);
-        weatherInfoLayout=(LinearLayout) findViewById(R.id.weather_info);
+        weatherInfoLayout=(LinearLayout) findViewById(R.id.weather_info_layout);
         cityNameText=(TextView) findViewById(R.id.city_name);
         publishText =(TextView) findViewById((R.id.publish_text));
         weatherDespText=(TextView) findViewById((R.id.weather_desp));
@@ -64,20 +64,20 @@ public class WeatherActivity extends Activity implements View.OnClickListener{
     }
 
 
-    public void onClick(View v){
+    @Override
+    public void onClick(View v) {
         switch (v.getId()){
             case R.id.switch_city:
-                Intent intent =new Intent(this,ChooseArea.class);
+                Intent intent= new Intent(this,ChooseArea.class);
                 intent.putExtra("from_weather_activity",true);
                 startActivity(intent);
                 finish();
                 break;
-
             case R.id.refresh_weather:
                 publishText.setText("同步中...");
-                SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(this);
-                String weatherCode=preferences.getString("weather_code","");
-                if (!TextUtils.isEmpty(weatherCode)) {
+                SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(this);
+                String weatherCode =preferences.getString("weather_code","");
+                if (!TextUtils.isEmpty(weatherCode)){
                     queryWeatherInfo(weatherCode);
                 }
                 break;
